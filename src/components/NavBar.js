@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { TwitterIcon, DribbleIcon, GithubIcon, LinkedInIcon, PinterestIcon } from "./Icon";
+import { TwitterIcon, DribbleIcon, GithubIcon, LinkedInIcon, PinterestIcon } from "./Icons";
 import Logo from "./Logo";
+import { motion } from "framer-motion";
 
 
 const CustomLink = ({ href, title, className = "" }) => {
@@ -34,21 +35,42 @@ const NavBar = () => {
             </nav>
             
             <nav className="flex space-x-4">
-                <Link href="https://twitter.com/yourprofile" target={"_blank"}>
+                <motion.a href="https://twitter.com/yourprofile" target={"_blank"}
+                whileHover={{y:-2 }}
+                whileTap={{scale:0.9}}
+                className="w-6 mr-3"
+                >
                     <TwitterIcon />
-                </Link>
-                <Link href="/" target={"_blank"}>
+                </motion.a>
+
+                <motion.a href="/" target={"_blank"}
+                className="w-6 mx-3"
+                whileHover={{y:-2 }}
+                whileTap={{scale:0.9}}
+                >
                     <GithubIcon />
-                </Link>
-                <Link href="/" target={"_blank"}>
+                </motion.a>
+
+                <motion.a href="/" target={"_blank"} className="w-6 mx-3"
+                whileHover={{y:-2 }}
+                whileTap={{scale:0.9}}
+                >
                     <LinkedInIcon />
-                </Link>
-                <Link href="/" target={"_blank"}>
+                </motion.a>
+
+                <motion.a href="/" target={"_blank"} className="w-6 mx-3"
+                whileHover={{y:-2 }}
+                whileTap={{scale:0.9}}
+                >
                     <PinterestIcon />
-                </Link>
-                <Link href="/" target={"_blank"}>
+                </motion.a>
+
+                <motion.a href="/" target={"_blank"} className="w-6 ml-3"
+                whileHover={{y:-2 }}
+                whileTap={{scale:0.9}}
+                >
                     <DribbleIcon />
-                </Link>
+                </motion.a>
             </nav>
 
             <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
