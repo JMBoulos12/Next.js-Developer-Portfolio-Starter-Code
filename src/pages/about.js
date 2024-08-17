@@ -5,7 +5,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React, {useEffect, useRef } from 'react'
 import profilePic from "../../public/images/profile/developer-pic-2.png";
-import { useEffect } from 'react/cjs/react.production.min'
+import Skills from '../components/Skills';
+import Experience from '../components/Experience';
+import Education from '../components/Education';
+
 
 
 const AnimatedNumbers = ({value}) => {
@@ -13,7 +16,7 @@ const AnimatedNumbers = ({value}) => {
   
 const motionValue = useMotionValue(0);  
 const springValue = useSpring(motionValue, { duration: 3000 })
-const isInView = useInView(ref);
+const isInView = useInView(ref, {once: true});
 
 useEffect(() => {
   if (isInView) {
@@ -23,11 +26,12 @@ useEffect(() => {
 
 useEffect(() => {
   springValue.on("change", (latest) => {
-
+      if(ref.current && latest.toFixed(0) <= value ){
+        ref.current.textContent = latest.toFixed(0);
+      }
   })
 
-
-}, [])
+}, [springValue, value])
 
 
 
@@ -74,26 +78,31 @@ const about = () => {
 
               <div className='flex flex-col items-end justify-center'>
                 <span className='inline-block text-7xl font-bold'>
-                  50+
+                  <AnimatedNumbers value={50} />+
                 </span>
                 <h2 className='text-xl font-medium capitalize text-dark/75'>satisfied clients</h2>
               </div>
           
               <div className='flex flex-col items-end justify-center'>
                 <span className='inline-block text-7xl font-bold'>
-                  40+
+                  <AnimatedNumbers value={40} />+
                 </span>
                 <h2 className='text-xl font-medium capitalize text-dark/75'>projects completed</h2>
               </div>
 
               <div className='flex flex-col items-end justify-center'>
                 <span className='inline-block text-7xl font-bold'>
-                  11+
+                <AnimatedNumbers value={11} />+
                 </span>
                 <h2 className='text-xl font-medium capitalize text-dark/75'>years of experience</h2>
               </div>
             </div>
+
           </div>
+
+          <Skills />
+          <Experience />
+          <Education />
         </Layout>
       </main>
     </>
