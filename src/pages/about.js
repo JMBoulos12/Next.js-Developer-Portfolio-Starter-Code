@@ -71,7 +71,7 @@ const about = () => {
           bg-light p-8
           '>
           <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark'  />
-              <Image src={profilePic} alt="JMB" className='w-full h-auto rounded-2x1' />
+              <Image src={profilePic} alt="JMB" className='w-full h-auto rounded-2xl' />
           </div>
 
     <div className='col-span-2 flex-col items-end justify-between'>
